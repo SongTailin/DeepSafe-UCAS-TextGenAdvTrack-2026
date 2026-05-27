@@ -6,7 +6,7 @@ This repository provides the scripts and released artifacts required to evaluate
 
 ## 1. Download The Released Model Files
 
-After cloning this repository, download the released model files directly from this repository and place them in the repository root:
+After cloning this repository, make sure that the released DeepSafe artifact files are available directly in the repository root:
 
 - `adapter_config.json`
 - `adapter_model.safetensors`
@@ -53,6 +53,15 @@ Notes:
 - higher `text_prediction` means more likely human-written
 - the script directly exports the official-format `.xlsx`
 - input may also be `.jsonl`
+- the script expects the released detector files in the current repository root by default
+
+### Included Test-1 Label Result                                                                  
+                                                                                                    
+The file                                                                                          
+                                                                                                    
+- `UCAS_AISAD_TEXT-test1_label.csv`
+                                                                                                 
+is our submitted label result on the official `test_1` set.
 
 ## 3. Evasion Evaluation On The Official Task
 
@@ -74,6 +83,7 @@ Notes:
 - if labels are present, only `label=0` rows are modified
 - if labels are absent, the script cannot infer which rows are machine-generated from the file alone, so strict selective modification would require additional external row-level information
 - output follows the official CSV format
+- the script expects the released attacker policy file in the current repository root by default
 
 ## 4. Technical Overview
 
@@ -201,6 +211,8 @@ The attacker is not optimized merely to maximize visible distortion. It is optim
   - released detector adapter
 - `detector_head.pt`, `retrieval_bank.pt`
   - released detector head and retrieval bank
+- `UCAS_AISAD_TEXT-test1_label.csv`
+   - our submitted label result on the official `test_1` set
 - `attack_policy.json`
   - released attacker policy
 - `predict_detection.py`
